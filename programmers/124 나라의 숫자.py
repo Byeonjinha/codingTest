@@ -1,17 +1,15 @@
-def solution(n):
-    print(Njinbub(n))
-    answer = ''
+def change124(n):
+    num = ['1','2','4']
+    answer = ""
+
+
+    while n > 0:
+        n -= 1
+        answer = num[n % 3] + answer
+        n //= 3
+
     return answer
 
 
-
-def Njinbub(n):
-    rev_base = ''
-    while n > 0:
-        n, mod = divmod(n, 3)
-        rev_base += str(mod)
-    return rev_base[::-1]
-
-
-n=3
-solution(n)
+# 아래는 테스트로 출력해 보기 위한 코드입니다.
+print( change124(100)  )
