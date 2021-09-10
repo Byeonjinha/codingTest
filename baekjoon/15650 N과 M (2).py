@@ -1,13 +1,12 @@
+from itertools import combinations
 import sys
-N=int(sys.stdin.readline())
-if N==0:
-    print(0)
-else:
-    count=0
-    suuzza='666'
+N, M=map(int,sys.stdin.readline().split())
+list1=[]
+for i in range(1,N+1):
+    list1.append(i)
+p =(list(combinations(list1,M)))
 
-    while count!=N:
-        if '666' in suuzza :
-            count+=1
-        suuzza=str(int(suuzza)+1)
-    print(int(suuzza)-1)
+for i in range(len(p)):
+    for j in range(len(p[i])-1):
+        print(p[i][j],end=' ')
+    print(p[i][-1])

@@ -1,4 +1,8 @@
+import sys
 
-a = int(input())
-for b in range(1,a+1):
-    print("*"*b)
+n= sys.stdin.readline().strip()
+suzza = []
+for i in n:
+    suzza.append(i)
+suzza.sort(reverse=True)
+print(''.join(suzza))

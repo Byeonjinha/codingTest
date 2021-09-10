@@ -1,38 +1,18 @@
-from collections import deque
 import sys
-read = sys.stdin.readline
-count=[]
-# def bfs(v):
-#     q = deque()
-#     q.append(v)
-#     visit_list[v] = 1
-#     while q:
-#         v = q.popleft()
-#         print(v, end = " ")
-#         for i in range(1, n + 1):
-#             if visit_list[i] == 0 and graph[v][i] == 1:
-#                 q.append(i)
-#                 visit_list[i] = 1
+from collections import Counter
+n=int(sys.stdin.readline())
+list1=[]
+for i in range(n):
+    m=int(sys.stdin.readline())
+    list1.append(m)
+list1.sort()
+bingap=Counter(list1).most_common()
 
-def dfs(v):
-    count.append(0)
-    visit_list2[v] = 1
-    for i in range(1, n + 1):
-        if visit_list2[i] == 0 and graph[v][i] == 1:
-            dfs(i)
 
-n = int(sys.stdin.readline().strip())
-m = int(sys.stdin.readline().strip())
-v = 1
-
-graph = [[0] * (n + 1) for _ in range(n + 1)]
-visit_list = [0] * (n + 1)
-visit_list2 = [0] * (n + 1)
-
-for _ in range(m):
-    a, b = map(int, read().split())
-    graph[a][b] = graph[b][a] = 1
-
-dfs(v)
-print(len(count)-1)
-# bfs(v)
+print(round(sum(list1) / n))
+print(list1[n//2])
+if len(bingap)>1 and bingap[0][1]==bingap[1][1]:
+    print(bingap[1][0])
+else:
+    print(bingap[0][0])
+print(max(list1)-min(list1))

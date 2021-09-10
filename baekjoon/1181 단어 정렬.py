@@ -1,25 +1,14 @@
 import sys
-def Fsosu(N):
-    count = int(0)
-    sosu=[]
-    for a in range(2,N):
-        for b in range(2,a):
-            if a%b ==0:
-                count+=1
-        if count==0:
-            sosu.append(a)
-        count=0
-                  #소수만드는기능
-    return sosu
-def Fcountsosu(N):
-    M= sys.stdin.readline().split()
-    n=(0)
-    sosulist=Fsosu(1000)
-    for i in M:
-        if sosulist.count(int(i)) > 0:
-            n=n+1
-    return n
+n=int(sys.stdin.readline())
+list1=[]
+list2=[]
+for i in range(n):
+    m = sys.stdin.readline().strip()
+    list1.append(m)
+list1=list(set(list1))
 
-N= sys.stdin.readline()
-
-print(Fcountsosu(N))
+for i in range(len(list1)):
+    list2.append([len(list1[i]),list1[i]])
+list2.sort(key=lambda x:(x[0],x[1]))
+for i in range(len(list2)):
+    print(list2[i][1])
