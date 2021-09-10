@@ -1,59 +1,49 @@
 import copy
-def nanum(files):
-    num1 = []
-    checknum1=[]
-    text1 =[]
-    suzza1 =[]
-    text2= []
-    for i in range(len(files)):
-        for i2 in range(len(files[i])):
-            if files[i][i2] in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']:
-                v=files[i][i2]
-                checknum1.append(i2)
-                while True:
-
-                    if files[i].index(files[i][i2])+1 == len(files[i]):
-                        num1.append(copy.deepcopy([v,len(files[i])]))
-                        break
-                    if i2+1==len(files[i]):
-                        num1.append(copy.deepcopy([v, len(files[i])]))
-                        break
-                    if files[i][i2+1] in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']:
-                        v+=files[i][i2+1]
-                        i2+=1
-                    else:
-
-                        num1.append(copy.deepcopy([v,i2+1]))
-                        break
-                break
-        text1.append(files[i][:checknum1[i]])
-        if len(files[i])==num1[i][1]:
-            text2.append('')
-        else:
-            text2.append(files[i][-(len(files[i])-num1[i][1]):])
-        suzza1.append(num1[i][0])
-
-    return list(zip(text1,suzza1,text2))
-    # 숫자에포함되면
-def daesomoonja(nanugi):
-    temp = []
-    temp2 = []
-    for i in range(len(nanugi)):
-        temp.append([nanugi[i][0].lower(),int(nanugi[i][1]),i])
-    temp.sort(key=lambda x:(x[0],x[1]))
-    for i in range(len(temp)):
-        temp2.append(nanugi[temp[i][2]])
-    return temp2
+import sys
+ungdaptime=[]
+churitime=[]
+countlist=[]
+countlist2=[]
+trafficlist=[]
+def solution(lines):
+    n = lines
+    for i in n:
+        cheehwan(i.split(" "))
+    start = min(ungdaptime)
+    end = max(ungdaptime)+ churitime[ungdaptime.index(max(ungdaptime))]
+    countlist=check(start, end, trafficlist)
+    countlist2= copy.deepcopy(countlist)
+    maxlog = 0
+    for i2 in range(2,len(countlist)):
+        countlist2[i2]+=countlist2[i2-1]
+    while(countlist.count(-1)!=0):
+        countlist[countlist.index(-1)]=0
+    for i3 in range(2,len(countlist)):
+        templog = countlist2[i3]+sum(countlist[i3:i3+1200])
+        if templog > maxlog :
+            maxlog = templog
+    return maxlog
 
 
-def solution(files):
-    answer = []
-    nanugi = nanum(files)
 
-    jung10 = daesomoonja(nanugi)
-    for i in jung10:
-        answer.append(''.join(i))
+def check(start, end ,trafficlist):
+    countlist=[0 for _ in range(start,end+2)]
+    for i in range(0,len(trafficlist)):
+        startpoint =trafficlist[i][0]-start
+        endpoint = trafficlist[i][1]-start
+        countlist[startpoint+1]+=1
+        countlist[endpoint+1]-=1
+    return countlist
 
-    return answer
-files =  ["img000012345", "img1.png","img00000","IMG02"]
-solution(files)
+
+def cheehwan(i2):
+    i3 =i2[1].split(":")
+    ungdaptime.append(int((float(i3[0])*3600+float(i3[1])*60+float(i3[2]))*1000))
+    i4 = i2[2].split("s")
+    churitime.append(int(float(i4[0])*1000))
+    trafficlist.append([int((float(i3[0])*3600+float(i3[1])*60+float(i3[2]))*1000), int((float(i3[0])*3600+float(i3[1])*60+float(i3[2]))*1000)+int(float(i4[0])*1000)])
+    return
+
+
+print(ungdaptime)
+print(churitime)

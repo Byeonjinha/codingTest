@@ -31,7 +31,7 @@ def solution(N, stages):
         silpae[silpae.index(i)]=''
     print(answer)
     return answer
-
+solution(N, stages)
 
 
 
