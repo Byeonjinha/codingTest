@@ -11,5 +11,3 @@ for i in range(k):
         a.append(b[0])
         b.remove(b[0])
 print(sum(a))
-
-#  lambda 없이 index로 찾는법

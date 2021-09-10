@@ -2,8 +2,8 @@ import sys
 list=[]
 n= int(sys.stdin.readline())
 for i in range(n):
-    m= sys.stdin.readline().split()
+    m= int(sys.stdin.readline())
     list.append(m)
-list.sort(key=lambda x:x[1])
+list.sort(reverse=True)
 for i in list:
-    print(i[0],end=' ')
+    print(i,end=' ')
