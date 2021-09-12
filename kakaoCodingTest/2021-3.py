@@ -2,7 +2,8 @@ from itertools import combinations
 from bisect import bisect_left
 def solution(info, query):
     answer = []
-    info_dict = {}
+    info_dict = {info}
+
     for i in range(len(info)):
         infol = info[i].split()  # info안의 문자열을 공백을 기준으로 분리
         mykey = infol[:-1]  # info의 점수제외부분을 key로 분류
