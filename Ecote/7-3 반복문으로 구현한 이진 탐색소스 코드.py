@@ -1,19 +1,18 @@
-def binary_search(array, target, start, end):
+def solution(sortedArray, findValue):
+    start= 0
+    end = len(sortedArray)
+    print(start,end)
     while start <= end:
         mid = (start + end) // 2
-        if array[mid] == target:
+        if sortedArray[mid] == findValue:
             return mid
-        elif array[mid] > target:
+        elif sortedArray[mid] > findValue:
             end = mid - 1
         else:
             start = mid + 1
-    return None
+    return -1
 
-n, target = list(map(int, input().split()))
-array = list(map(int, input().split()))
 
-result = binary_search(array, target, 0, n - 1)
-if result == None:
-    print("원소가 존재하지 않습니다.")
-else:
-    print(result + 1)
+sortedArray=	[1, 2, 5, 7, 10, 15, 18, 20]
+findValue = 15
+solution(sortedArray,findValue)
