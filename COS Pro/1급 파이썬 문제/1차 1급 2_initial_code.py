@@ -1,6 +1,7 @@
-def func_a(string, length):
+def func_a(string, length):   #2021/12/26 0을 앞에 채워 길이를 맞추는 작업
     padZero = ""
-    padSize = @@@
+   # padSize = @@@
+    padSize = length - len(string)
     for i in range(padSize):
         padZero += "0"
     return padZero + string
@@ -12,7 +13,8 @@ def solution(binaryA, binaryB):
     
     hamming_distance = 0
     for i in range(max_length):
-        if @@@:
+       # if @@@: ->    binaryA의 i 번째 와 binaryB의 i 번째가 같지않을때 hamming 거리가 증가함
+        if binaryA[i] != binaryB[i]:
             hamming_distance += 1
     return hamming_distance
 
