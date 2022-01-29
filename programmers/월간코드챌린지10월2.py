@@ -1,8 +1,11 @@
-def solution(n):
-    for i in range(1,n):
-        if n%i ==1 :
-            return i
-    answer = 0
+def solution(n, left, right):
+    list1 = []
+    for i in range(n):
+        for i2 in range(n):
+            list1.append([i,i2])
+    answer = []
     return answer
-n=10
-solution(n)
+n=3
+left=2
+right= 5
+solution(n, left, right)

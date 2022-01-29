@@ -12,5 +12,5 @@ def solution(answers):
             if next(giveups[i]) == num:
                 scores[i] += 1
     highest = max(scores)
-
+    print([i + 1 for i, v in enumerate(scores) if v == highest])
     return [i + 1 for i, v in enumerate(scores) if v == highest]
