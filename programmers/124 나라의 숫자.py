@@ -1,17 +1,9 @@
-def solution(n):
-    print(Njinbub(n))
-    answer = ''
-    return answer
-
-
-
-def Njinbub(n):
-    rev_base = ''
-    while n > 0:
-        n, mod = divmod(n, 3)
-        rev_base += str(mod)
-    return rev_base[::-1]
-
-
-n=3
-solution(n)
+from itertools import product
+def solution(word):
+    a= []
+    for i in range(1, 6):
+        a+= list(map(''.join,product(['A', 'E', 'I', 'O', 'U'], repeat=i)))
+    a.sort()
+    return a.index(word) + 1
+word="A"
+solution(word)
