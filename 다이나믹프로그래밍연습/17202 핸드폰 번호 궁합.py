@@ -5,7 +5,6 @@ b = sys.stdin.readline().split()
 a=a[0]
 b=b[0]
 c=""
-dp = [0 for _ in range(len(a)+len(b) + 1)]
 for i in range(len(a)):
     c+= a[i]
     c+= b[i]
