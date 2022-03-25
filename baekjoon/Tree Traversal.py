@@ -7,6 +7,7 @@ class Node:
         n=n+1
 
 
+
 #전위 순회(Preorder Traversal)
 def pre_order(node):
     print(node.data, end=' ')
@@ -29,11 +30,20 @@ def post_order(node):
     if node.right_node != None:
         post_order(tree[node.right_node])
     print(node.data, end=" ")
-n = int(input())
-tree = {}
 
-for i in range(n):
-    data, left_node, right_node = input().split()
+
+def solution(info, edges):
+    answer = 0
+    return answer
+
+info = [0,0,1,1,1,0,1,0,1,0,1,1]
+edges=[[0,1],[1,2],[1,4],[0,8],[8,7],[9,10],[9,11],[4,3],[6,5],[4,6],[8,9]]
+solution(info, edges)
+
+tree = {}
+for i in range(len(info)):
+    data = info[i]
+    left_node, right_node = input().split()
     if left_node =="None":
         left_node = None
     if right_node =="None":

@@ -1,18 +1,7 @@
-from collections import deque
+
 import sys
 read = sys.stdin.readline
 count=[]
-# def bfs(v):
-#     q = deque()
-#     q.append(v)
-#     visit_list[v] = 1
-#     while q:
-#         v = q.popleft()
-#         print(v, end = " ")
-#         for i in range(1, n + 1):
-#             if visit_list[i] == 0 and graph[v][i] == 1:
-#                 q.append(i)
-#                 visit_list[i] = 1
 
 def dfs(v):
     count.append(0)

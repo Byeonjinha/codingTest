@@ -1,11 +1,13 @@
-import math
-import sys
-N= int(sys.stdin.readline())
-check_list=[0]*10001
-for i in range(N):
-    input_num = int(sys.stdin.readline())
-    check_list[input_num]=check_list[input_num]+1
-for i in range(10001):
-    if check_list[i]!= 0:
-        for j in range(check_list[i]):
-            print(i)
+a = input().split('-')
+num = []
+for i in a:
+    cnt = 0
+    s = i.split('+')
+    print(s)
+    for j in s:
+        cnt += int(j)
+    num.append(cnt)
+n = num[0]
+for i in range(1, len(num)):
+    n -= num[i]
+print(n)
