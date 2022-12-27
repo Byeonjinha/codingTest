@@ -7,6 +7,6 @@ def solution(k, score):
             answer.append(min(tmpArray))
         else :
             tmpArray.append(i)
-            tmpArray.remove(tmpArray[tmpArray.index(min(tmpArray))])
+            tmpArray.remove(min(tmpArray))
             answer.append(min(tmpArray))
     return answer
