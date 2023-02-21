@@ -68,10 +68,6 @@ def solution(maps):
         return -1
     
     Ebfs(maps, L[0], L[1], tmpMaps[L[0]][L[1]])
-    for i in maps:
-        print(i)
     if not isinstance(maps[E[0]][E[1]], int):
         return -1
-    for i in maps:
-        print(i)
     return maps[E[0]][E[1]]
