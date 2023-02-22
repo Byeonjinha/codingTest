@@ -9,7 +9,6 @@ def merge(a, p, q, r):
     j = q + 1
     t = 1
     while i <= q and j <= r:
-        # print(a)
         if a[i] <= a[j]:
             buff[t] = a[i]
             t += 1
@@ -19,7 +18,6 @@ def merge(a, p, q, r):
             t += 1
             j += 1
     while i <= q:
-        # print(a)
         buff[t] = a[i]
         t += 1
         i += 1
@@ -46,7 +44,7 @@ def merge_sort(a, p, r) -> None:
         merge_sort(a, q + 1, r)
         merge(a, p, q, r)
 
-buff = [None] * (n * 2)
+buff = [None] * (n + 1)
 merge_sort(a, 0, n - 1)
 if flag:
     print(-1)
