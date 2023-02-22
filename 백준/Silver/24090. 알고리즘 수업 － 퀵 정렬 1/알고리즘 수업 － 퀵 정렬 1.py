@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(10 ** 4)
+sys.setrecursionlimit(32000)
 n, k = map(int, sys.stdin.readline().strip().split())
 a = list(map(int, sys.stdin.readline().strip().split()))
 flag = True
