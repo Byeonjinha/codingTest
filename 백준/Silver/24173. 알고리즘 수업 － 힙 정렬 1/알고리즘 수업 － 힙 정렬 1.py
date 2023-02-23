@@ -22,7 +22,7 @@ def heapify(array, parent, size):
 
         if k == 0:
             flag = False
-            print(min(array[smallest], array[parent]), max(array[smallest], array[parent]))
+            print(array[smallest], array[parent])
             return
         array[parent], array[smallest] = array[smallest], array[parent]
         heapify(array, smallest, size)
@@ -46,7 +46,7 @@ def heap_sort(a):
             break
         k -= 1
         if k == 0:
-            print(min(a[0], a[j]), max(a[0], a[j]))
+            print(a[0], a[j])
             flag = False
             break
         a[0], a[j] = a[j], a[0]
