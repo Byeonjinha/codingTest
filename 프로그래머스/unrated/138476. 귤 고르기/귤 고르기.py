@@ -1,13 +1,11 @@
 from collections import Counter
-from heapq import heappush, heappop
 def solution(k, tangerine):
+    tDict = Counter(tangerine)
+    tDict = sorted(tDict.items(), key=lambda x: -x[1])
     answer = 0
-    heap = []
-    tangerineDict = Counter(tangerine) 
-    for tangerineCount in tangerineDict:
-         heappush(heap, -tangerineDict[tangerineCount])
-    while heap and k > 0 :
-        a = heappop(heap)
-        k += a
+    for _,count in tDict:
+        k -= count
         answer += 1
+        if k <= 0:
+            break
     return answer
