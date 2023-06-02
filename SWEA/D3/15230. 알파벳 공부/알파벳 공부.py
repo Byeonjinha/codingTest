@@ -1,3 +1,5 @@
+from collections import deque
+
 T = int(input())
 alpha = "abcdefghijklmnopqrstuvwxyz"
 for tc_idx in range(T):
