@@ -1,22 +1,12 @@
-fib_count = 0
 fibo_count = 0
-def fib(n):
-    global fib_count
-    if n == 1 or n == 2:
-         return 1;  # 코드1
-    else:
-        fib_count += 1
-        return (fib(n - 1) + fib(n - 2));
-
-def fibonacci(n):
+def f(n):
     global fibo_count
-    f = [0] * (n + 1)
-    f[1] = f[2] = 1
-
-    for i in range(3, n + 1):
+    DP = [0 for _ in range(n + 1)]
+    DP[0], DP[1] = 1, 1
+    for i in range(2, n):
         fibo_count += 1
-        f[i] = f[i - 1] + f[i - 2]
-    return f[n]
+        DP[i] = DP[i - 1] + DP[i - 2]
+    return DP[n - 1]
 
 n = int(input())
-print(fibonacci(n), fibo_count)
+print(f(n), fibo_count)
