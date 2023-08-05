@@ -1,20 +1,22 @@
-func generateTable() -> [Int]{
-    var table: [Int] = Array(repeating: -1, count: 100001)
-    let initArray: [Int] = [-1, 1, -1, 2, 1, 3, 2, 4, 3, 2]
-    table.enumerated().forEach {
-        if $0.offset <= 9 {
-            table[$0.offset] = initArray[$0.offset]
+func main(){
+    guard let nStr = readLine(), let n = Int(nStr) else { return }
+    if n % 5 == 0 {
+        print(Int(n / 5))
+        return
+    }
+    var k = Int(n / 5)
+    while true {
+        if ( n - ( k * 5 )) % 2 == 0 {
+            break
         } else {
-            table[$0.offset] = table[$0.offset - 5] + 1
+            k -= 1
         }
     }
-    return table
-}
-
-func main(){
-    let dp = generateTable()
-    guard let nStr = readLine(), let n = Int(nStr) else { return }
-    print(dp[n - 1])
+    if k < 0 {
+        print(-1)
+    } else {
+        print( k + (n - (k * 5)) / 2)
+    }
 }
 main()
 
