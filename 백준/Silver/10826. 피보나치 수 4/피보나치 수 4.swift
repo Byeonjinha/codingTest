@@ -1,40 +1,73 @@
-import Foundation
-let N = Int(readLine()!)!
 
-if N == 0 { print(0); exit(0) }
-else if N <= 2 { print(1); exit(0) }
-var prev = [Int](repeating: 0, count: 10001)
-var result = [Int](repeating: 0, count: 10001)
-prev[prev.count-1] = 1
-var pprev = prev
+let table = generateTable(10001)
 
-func sumArr(_ A: [Int], _ B: [Int]) -> [Int] {
-    var result = [Int](repeating: 0, count: 10001)
-    var idx = A.count - 1
-    var rem = 0
-    while idx >= 0 {
-        result[idx] = (A[idx] + B[idx] + rem) % 10
-        rem = (A[idx] + B[idx] + rem) / 10
-        idx -= 1
+func sumElement(_ prevArray: [Int], _ pprevArray: [Int], num: Int) -> [Int]{
+    var newArray = Array(repeating: 0, count: 2100)
+    for i in prevArray.indices.reversed() {
+        var idx = i
+        var sum: Int = prevArray[idx] + pprevArray[idx]
+        while sum > 0 {
+            newArray[idx] += sum % 10
+            if newArray[idx] > 9 {
+                newArray[idx - 1] += newArray[idx] / 10
+                newArray[idx] -= 10
+            }
+            idx -= 1
+            sum /= 10
+        }
     }
-    return result
+    
+    return newArray
 }
 
-for _ in 3...N {
-    result = sumArr(prev, pprev)
-    pprev = prev
-    prev = result
+func generateTable(_ num: Int) -> [[Int]]{
+    if num == 0 { return [[0]] }
+    var dp: [[Int]] = Array(repeating: Array(repeating: 0, count: 2100), count: num + 1)
+    dp[1][dp[1].count - 1] = 1
+
+    for i in dp.indices {
+        let idx = i
+        if i != 0 && i != 1 {
+            dp[idx] = sumElement(dp[idx - 1], dp[idx - 2], num: num)
+        }
+    }
+    
+    return dp
 }
 
-var S = ""
-var flag = false
-for i in result.indices {
-    if result[i] != 0 && flag == false {
-        flag = true
+func printAnswer(_ num: [Int]) -> String{
+    var isFind = false
+    var answer = ""
+    for i in num {
+        if i != 0 {
+            isFind = true
+        }
+        if isFind {
+            answer += "\(i)"
+        }
     }
-    if flag {
-        S += "\(result[i])"
-    }
+    return answer
 }
 
-print(S)
+
+func main() throws {
+    guard let nStr = readLine(),
+          let n = Int(nStr)
+    else { throw ErrorCase.numError(text: "입력값이 올바르지 않습니다.") }
+    
+    let answer = printAnswer(table[n])
+    if answer == "" {
+        print("0")
+    } else {
+        print("\(answer)")
+    }
+}
+do {
+    try main()
+} catch {
+    print(error)
+}
+
+enum ErrorCase: Error {
+    case numError(text: String)
+}
