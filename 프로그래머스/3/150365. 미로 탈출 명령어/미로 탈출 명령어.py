@@ -8,8 +8,10 @@ lowestWord = "z"
 
 goalY, goalX = 0, 0
 height, width = 0, 0
+
 dy, dx = [1, 0, 0 , -1], [0, -1, 1, 0]
 moves = ["d", "l", "r", "u"]
+
 def validate(y, x, moveCount, move):
     global goalY, goalX, lowestWord
     
@@ -17,11 +19,13 @@ def validate(y, x, moveCount, move):
         return False
     if (abs(goalY - y) + abs(goalX - x)) % 2 != moveCount % 2:
         return False
+    
     words = [lowestWord, move]
     words.sort()
     if len(move) <= len(words[0]) and move != words[0]:
         return False
     lowestWord = move
+    
     return True
 
 def locationValidate(y, x):
@@ -57,6 +61,7 @@ def solution(n, m, x, y, r, c, k):
     goalY, goalX = r - 1, c - 1
     height, width = n, m 
     startY, startX = x - 1, y - 1
+    
     for d in range(4):
         ny = startY + dy[d]
         nx = startX + dx[d]
