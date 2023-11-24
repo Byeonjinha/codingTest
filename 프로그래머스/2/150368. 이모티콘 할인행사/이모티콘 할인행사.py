@@ -45,8 +45,10 @@ def dfs(users, discount, emoticon, emoticons, usersPayment, enterUserArray):
 
 def solution(users, emoticons):
     global enterUsers, benefit
+    
     usersPayement = [0 for _ in range(len(users))]
     enterUserArray = [False for _ in range(len(users))]
+    
     emoticon, *emoticons = emoticons
     for discount in range(10, 41, 10):
         dfs(users, discount, emoticon, emoticons, usersPayement, enterUserArray)    
